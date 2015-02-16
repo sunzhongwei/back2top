@@ -48,6 +48,10 @@ var BackToTop = React.createClass({
 	}
 });
 
+var back2topDiv = document.createElement('div');
+back2topDiv.setAttribute("id", "back-to-top");
+document.body.appendChild(back2topDiv);
+
 React.render(
   <BackToTop />,
   document.getElementById('back-to-top')
