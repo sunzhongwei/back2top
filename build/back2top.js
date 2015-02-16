@@ -1,6 +1,6 @@
 var BackToTop = React.createClass({displayName: "BackToTop",
     getInitialState: function() {
-        return {hidden: true};
+        return {hidden: true, hover: false};
     },
 
     componentDidMount: function() {
@@ -21,15 +21,29 @@ var BackToTop = React.createClass({displayName: "BackToTop",
 		}
     },
 
+	handleHover: function() {
+		this.setState({hover: true});
+	},
+
+	handleUnhover: function() {
+		this.setState({hover: false});
+	},
+
 	render: function() {
 		var btnStyle = {
 			display: this.state.hidden ? "none": "",
 			position: "fixed",
 			bottom: "30px",
-			marginLeft: "90%"
+			marginLeft: "90%",
+			color: this.state.hover ? "#000000": "#EF95E7",
+			backgroundColor: this.state.hover ? "#DDDDDD": "#B10DC9",
+			padding: "10px"
 		};
 		return (
-  			React.createElement("span", {onClick: this.handleClick, style: btnStyle}, "返回页首")
+  			React.createElement("span", {onClick: this.handleClick, 
+			      onMouseEnter: this.handleHover, 
+				  onMouseLeave: this.handleUnhover, 
+				  style: btnStyle}, "返回页首")
 		);
 	}
 });
