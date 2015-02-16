@@ -1,0 +1,9 @@
+# ~/.tmuxinator/back2top.yml
+
+name: back2top
+root: ~/work/back_to_top
+
+windows:
+  - editor: ls
+  - shell: ls
+  - server: ls 
