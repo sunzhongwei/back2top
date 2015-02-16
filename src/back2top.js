@@ -1,8 +1,6 @@
 var BackToTop = React.createClass({
     getInitialState: function() {
-        return {style: {
-			display: "none"
-		}};
+        return {hidden: true};
     },
 
     componentDidMount: function() {
@@ -17,22 +15,21 @@ var BackToTop = React.createClass({
 	handleScroll: function() {
 		var scrollTop = document.getElementsByTagName("body")[0].scrollTop;
 		if (scrollTop > 100) {
-			this.setState({style: {
-				display: "",
-				position: "fixed",
-				bottom: "30px",
-				"margin-left": "90%"
-			}});
+			this.setState({hidden: false});
 		} else {
-			this.setState({style: {
-				display: "none"
-			}});
+			this.setState({hidden: true});
 		}
     },
 
 	render: function() {
+		var btnStyle = {
+			display: this.state.hidden ? "none": "",
+			position: "fixed",
+			bottom: "30px",
+			marginLeft: "90%"
+		};
 		return (
-  			<span onClick={this.handleClick} style={this.state.style}>返回页首</span>
+  			<span onClick={this.handleClick} style={btnStyle}>返回页首</span>
 		);
 	}
 });
