@@ -14,7 +14,7 @@
 		},
 
 		handleScroll: function() {
-			var scrollTop = document.getElementsByTagName("body")[0].scrollTop;
+			var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
 			if (scrollTop > 100) {
 				this.setState({hidden: false});
 			} else {
